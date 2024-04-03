@@ -15,7 +15,6 @@ class ApiArtists implements IApiArtistsControllerCalls {
             const artistItem: Artist = ArtistAdapter.adaptArtist(response.data);
             return artistItem;
         } catch (error) {
-            console.log(error);
             throw error;
         }
     }
