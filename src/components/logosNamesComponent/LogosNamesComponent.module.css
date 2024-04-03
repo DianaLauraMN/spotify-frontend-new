@@ -1,0 +1,23 @@
+.logoContainerGTS{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.logoContainerSPF{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.logoContainerGTS img{
+    min-width: 2rem;
+    max-width: 2rem;
+}
+
+.logoContainerSPF img{
+    min-width: 1.5rem;
+    max-width: 1.5rem;
+}

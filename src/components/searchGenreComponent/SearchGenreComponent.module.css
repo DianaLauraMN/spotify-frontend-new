@@ -1,0 +1,43 @@
+/* Estilos para la lista desplegable */
+.autocompleteContainer {
+    max-width: 18rem;
+  }
+  
+  .ulResults {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--lightGrey);
+    position: absolute;
+    z-index: 1;
+    width: 18rem;
+    max-height: 9rem;
+    overflow: scroll;
+    text-overflow: ellipsis;
+  
+    scrollbar-width: none;
+      /* Para navegadores estándar */
+      -ms-overflow-style: none;
+      /* Para Internet Explorer / Edge */
+      -moz-scrollbar-width: none;
+      /* Para Firefox */
+  }
+  
+  .ulResults::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari / Opera */
+  }
+  
+  .resultOption {
+    padding: .1rem .2rem;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: var(--darkGrey);
+  }
+  
+  /* Para ocultar la lista si no hay resultados o está vacía */
+  ul:empty {
+    display: none;
+  }

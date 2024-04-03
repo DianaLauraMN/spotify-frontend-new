@@ -1,0 +1,30 @@
+.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.btnSpotify {
+    cursor: pointer;
+    height: 3rem;
+    width: 11rem;
+    background-color: var(--green);
+    border: none;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font);
+    border-radius: 3rem;
+}
+
+.btnWinner{
+    cursor: pointer;
+    height: 3rem;
+    width: 11rem;
+    background-color: rgba(255, 255, 255, 0.253);
+    border: none;
+    color: white; 
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font);
+    border-radius: 3rem;
+}

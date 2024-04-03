@@ -1,0 +1,28 @@
+.cardSelectionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Esto distribuirá el espacio verticalmente */
+    height: 100%;
+}
+
+.centerContainer {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerContainer div {
+    justify-self: center;
+    align-self: center;
+}
+
+.recentlyPlayedContainer {}
+
+.linearTimerContainer {
+    align-self: center;
+    width: 100%;
+}

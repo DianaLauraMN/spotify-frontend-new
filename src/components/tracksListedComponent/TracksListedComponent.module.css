@@ -1,0 +1,74 @@
+.recentlyPlayedContainer {
+    display: grid;
+    justify-content: center;
+    text-align: start;
+}
+
+.recentlyPlayedContainer h3 {
+    font-weight: 600;
+    font-size: .75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentlyPlayedContainer h4 {
+    font-weight: 300;
+    font-size: .7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scrollContainer {
+    height: 30rem;
+    overflow: hidden; /* Oculta la barra de desplazamiento */
+}
+
+.scrollContent{
+    width: calc(100% + 16px); /* Ancho incluyendo el margen negativo */
+    height: 100%;
+    margin-right: -16px; /* Margen negativo para compensar el ancho extra */
+    overflow-y: scroll; /* Permite el desplazamiento vertical */
+    padding-right: 16px; /* Espacio para el contenido en el margen derecho */
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  /*Agregar el     overflow: hidden; /* Oculta la barra de desplazamiento */
+}
+
+.cardSong {
+    width: 11rem;
+    height: 13.5rem;
+    background-color: var(--mediumGrey);
+    display: grid;
+    grid-template-rows: 80% 10% 10%;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.cardSong:hover{
+    background-color: var(--lightGrey);
+}
+
+.coverAlbum img {
+    width: 9rem;
+    height: 9rem;
+}
+
+.albumData {
+    min-height: 2rem;
+    max-height: 3rem;
+    width: 8.8rem;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    margin-bottom: .5rem;
+    gap: .3rem;
+}
+

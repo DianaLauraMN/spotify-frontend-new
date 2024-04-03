@@ -1,0 +1,30 @@
+.btnConfigs {
+    height: auto;
+    width: auto;
+}
+
+.btnConfigs button {
+    width: 6rem;
+    height: 100%;
+    font-family: var(--font);
+    border: none;
+    border: 1px solid var(--white);
+    border-radius: 0.3rem;
+    cursor: pointer;
+    padding: .6rem .3rem;
+    transition: all 1s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.btnSelected {
+    background-color: var(--white);
+    color: var(--darkGrey);
+}
+
+.btnNotSelected {
+    background-color: var(--darkGrey);
+    color: var(--white);
+}

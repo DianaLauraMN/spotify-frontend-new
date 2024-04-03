@@ -1,0 +1,42 @@
+.levelContainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 0.438rem;
+    text-align: left;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerContainer {
+    display: grid;
+    grid-template-rows: 25% 75%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+}
+
+.centerContainer div {
+    justify-self: center;
+    align-self: center;
+}
+
+.labelContainer_title {
+    width: 100%;
+}
+
+.btnsContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .2rem;
+}
+
+@media (width <=45em) {
+    .levelContainer {
+        background-color: white;
+    }
+}

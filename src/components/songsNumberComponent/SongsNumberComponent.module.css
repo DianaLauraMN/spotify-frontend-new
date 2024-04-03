@@ -1,0 +1,44 @@
+.songsNumberContainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 0.438rem;
+    text-align: left;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerContainer {
+    display: grid;
+    grid-template-rows: 25% 75%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.centerContainer div {
+    justify-self: center;
+    align-self: center;
+}
+
+.inputContainer {
+    width: 5rem;
+}
+
+.inputContainer input {
+    width: 100%;
+    padding: .2rem 0rem;
+    margin-bottom: .5rem;
+    border: none;
+    border-bottom: 1px solid #545454;
+    outline: none;
+    text-align: center; 
+
+}
+
+.inputContainer input::placeholder {
+    text-align: center; 
+  }

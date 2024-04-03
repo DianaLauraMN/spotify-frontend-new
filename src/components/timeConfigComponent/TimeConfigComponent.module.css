@@ -1,0 +1,103 @@
+.timeConfigContainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 0.438rem;
+    text-align: center;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerContainer {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+    margin: 1rem 0rem;
+}
+
+.centerContainer div {
+    justify-self: center;
+    align-self: center;
+}
+
+.slidecontainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.slidecontainer input {
+    margin-top: .5rem;
+}
+
+.slidecontainer p {
+    color: var(--green);
+}
+
+.drag__bar {
+    appearance: none;
+    width: 18rem;
+    height: 1rem;
+    background: rgba(255, 255, 255, 0.246);
+    border-radius: 1rem;
+}
+
+/* input[type="range"]::-webkit-slider-thumb { no funcionaba*/
+.drag__bar::-webkit-slider-thumb {
+    /* Estilos para WebKit (Chrome y Safari) */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--black);
+    background-image: url('../../img/icon-logo.svg');
+    background-size: cover;
+    border: 0.12rem solid var(--white);
+    border-radius: 0.3rem;
+
+    cursor: pointer;
+    box-shadow: 0px 0px 11px 8px rgba(0, 0, 0, 0.26);
+    background-size: 45%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 
+.drag__bar::-webkit-slider-thumb  {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+      border-radius: 50%;
+    background-image: url('https://img.icons8.com/material-outlined/344/average-2.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  } */
+
+/* input[type="range"]::-moz-range-thumb  tambien me funcionaba*/
+.drag__bar::-moz-range-thumb {
+    /* Estilos para Gecko (Firefox) */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--black);
+    background-image: url('../../img/icon-logo.svg');
+    background-size: cover;
+    border: 0.12rem solid var(--white);
+
+    cursor: pointer;
+    box-shadow: 0px 0px 11px 8px rgba(0, 0, 0, 0.26);
+    background-size: 45%;
+    background-position: center;
+    background-repeat: no-repeat;
+}

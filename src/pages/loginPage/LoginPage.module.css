@@ -1,0 +1,41 @@
+.bodyHomePage {
+    overflow-y: hidden;
+}
+
+.wave {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    /* Centra horizontalmente el elemento */
+    transform: translateX(-50%);
+    /* Centra horizontalmente el elemento */
+    z-index: 1;
+}
+
+.wave svg {
+    margin: 0;
+    padding: 0;
+}
+
+.containerWrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra verticalmente el contenido */
+    gap: .3rem;
+    min-height: 18.75rem;
+}
+
+.textContainer button {
+    margin-top: 1rem;
+}

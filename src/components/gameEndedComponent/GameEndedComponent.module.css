@@ -1,0 +1,107 @@
+ .gameResultsContainer h1{
+    
+    font-size: 1.2rem;
+    max-width: 19rem;
+}
+
+.failedTracksContainer {
+    display: grid;
+    justify-content: center;
+    text-align: start;
+}
+
+.albumData h3 {
+    font-weight: 600;
+    font-size: .75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.albumData h4 {
+    font-weight: 300;
+    font-size: .7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scrollContainer {
+    height: 26rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.scrollContent{
+    width: calc(100% + 16px);
+    height: 100%;
+    margin-right: -16px;
+    overflow-y: scroll;
+    padding-right: 16px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.cardSong {
+    width: 11rem;
+    height: 13.5rem;
+    background-color: var(--mediumGrey);
+    display: grid;
+    grid-template-rows: 80% 10% 10%;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.cardSong:hover{
+    background-color: var(--lightGrey);
+}
+
+.coverAlbum img {
+    width: 9rem;
+    height: 9rem;
+}
+
+.albumData {
+    min-height: 2rem;
+    max-height: 3rem;
+    width: 8.8rem;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    margin-bottom: .5rem;
+    gap: .3rem;
+}
+
+.perfectGameContainer{
+    min-height: 27.5rem;
+    max-width: 14.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfectGameContainer h4{
+    font-weight: 100;
+}
+
+.perfectGameContent img{
+    margin: 1rem;
+}
+
+.perfectGameContainer h4{
+   font-size:1.3rem;
+}
+/* 
+.albumData h3{
+    font: bolder;
+}
+
+.albumData h4{
+    font-size: .75rem;
+} */

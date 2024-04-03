@@ -1,0 +1,90 @@
+.searchGenreContainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--darkGrey);
+    border-radius: 0.438rem;
+    text-align: left;
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerContainer {
+    display: grid;
+    grid-template-rows:25% 75%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+}
+
+.centerContainer div {
+    justify-self: center;
+    align-self: center;
+}
+
+.inputContainer {
+    width: 100%;
+}
+
+.inputContainer input {
+    width: 100%;
+    padding: .2rem 0rem;
+    margin-bottom: .5rem;
+    border: none;
+    border-bottom: 1px solid #545454;
+    outline: none;
+}
+
+.genresBtnsOptions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .2rem;
+    max-height: 5.5rem;
+    max-width: 19rem;
+    overflow: scroll;
+
+    /* Oculta los controles del scroll */
+    scrollbar-width: none;
+    /* Para navegadores estándar */
+    -ms-overflow-style: none;
+    /* Para Internet Explorer / Edge */
+    -moz-scrollbar-width: none;
+    /* Para Firefox */
+}
+
+.genresBtnsOptions::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari / Opera */
+}
+
+.genresBtnsSelectedOptions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .2rem;
+
+    max-height: 5.2rem;
+    max-width: 19rem;
+    overflow: scroll;
+
+    /* Oculta los controles del scroll */
+    scrollbar-width: none;
+    /* Para navegadores estándar */
+    -ms-overflow-style: none;
+    /* Para Internet Explorer / Edge */
+    -moz-scrollbar-width: none;
+    /* Para Firefox */
+}
+
+.genresBtnsSelectedOptions::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari / Opera */
+}
+
+.genresBtnsSelectedOptions button {
+    background-color: var(--white);
+    color: var(--darkGrey);
+}
