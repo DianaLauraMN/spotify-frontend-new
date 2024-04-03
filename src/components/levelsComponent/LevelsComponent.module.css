@@ -34,9 +34,3 @@
     grid-template-columns: repeat(3, 1fr);
     gap: .2rem;
 }
-
-@media (width <=45em) {
-    .levelContainer {
-        background-color: white;
-    }
-}
