@@ -16,8 +16,6 @@ class ApiUser implements IApiUserControllerCalls {
             const user: User = UserAdapter.adaptUser(response.data);
             return user;
         } catch (error) {
-            console.log(error);
-            
             throw error;
         }
     }
