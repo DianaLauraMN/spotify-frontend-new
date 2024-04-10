@@ -6,6 +6,7 @@ import useAuth from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Global from "../../Global/Global";
 import useSession from '../../hooks/useSession';
+import useGTS from '../../hooks/useGTS';
 
 const spoty_url = `https://accounts.spotify.com/authorize?client_id=${Global.client_id}&response_type=code&redirect_uri=${Global.redirect_uri}&scope=${Global.scopes}`;
 
@@ -13,16 +14,27 @@ const LoginPage = () => {
     const [code, setCode] = useState('');
     const { apiAuth, verifyUserSession } = useAuth();
     const { sessionState: { isSessionActive }, loadAuthData } = useSession();
+    const { loadUserProfile, loadUserTop6Artists, loadUserTop6GenresSeeds } = useGTS();
 
     const navigate = useNavigate();
     const location = useLocation();
 
+    const loadUserData = () => {
+        loadAuthData();
+        loadUserProfile();
+        loadUserTop6Artists();
+        loadUserTop6GenresSeeds();
+
+        setTimeout(() => {
+            navigate('/configGame');
+        }, 500);
+
+    }
     const handleOnClick = async () => {
         verifyUserSession();
-        
+
         if (isSessionActive) {
-            loadAuthData();
-            navigate('/configGame');
+            loadUserData();
         } else {
             window.location.replace(spoty_url);
         }
@@ -31,13 +43,12 @@ const LoginPage = () => {
     const authenticateUser = async () => {
         const urlParams = new URLSearchParams(location.search);
         const spotifyCode = urlParams.get('code');
-        
+
         if (!code && spotifyCode) {
             if (!apiAuth.isTokenValid()) {
                 setCode(spotifyCode);
                 await apiAuth.getCredentials(spotifyCode);
-                loadAuthData();
-                navigate('/configGame');
+                loadUserData();
             }
         }
     }
