@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import style from "./ConfigGamePage.module.css";
 import useGTS from "../../hooks/useGTS";
 import useGame from "../../hooks/useGame";
@@ -11,32 +11,25 @@ import ConfigArtistComponent from "../../components/configArtistComponent/Config
 import TimeConfigComponent from "../../components/timeConfigComponent/TimeConfigComponent";
 import SongsNumberComponent from "../../components/songsNumberComponent/SongsNumberComponent";
 import useHttpCall from "../../hooks/useHttpCall";
-import useSession from "../../hooks/useSession";
 
 const ConfigGamePage = () => {
   const { gtsState: { user }, loadUserProfile } = useGTS();
-  const { loadAuthData } = useSession();
-  const [userLoaded, setUserLoaded] = useState(false);
-  const { handleOnSubmitConfigGame, configurationGame } = useGame();
+  const { handleOnSubmitConfigGame, configurationGame, resetStateGame } = useGame();
   const { checkAuthentication } = useHttpCall();
 
   const handleOnClick = () => {
-    checkAuthentication(handleOnSubmitConfigGame(configurationGame),"/game");
+    checkAuthentication(handleOnSubmitConfigGame(configurationGame), "/game");
   }
 
   useEffect(() => {
-    if (!userLoaded) {
-      loadAuthData();
-      checkAuthentication(loadUserProfile());
-      setUserLoaded(true);
-    }
+    resetStateGame();
+    if (!user)  checkAuthentication(loadUserProfile());
   }, []);
 
   return (
     <div>
-      {user && (<>
         <LogosNamesComponent />
-        <h2>Welcome {user.name} </h2>
+        <h2>Welcome {user?.name} </h2>
         <h3>Please select the options you would like to play with.</h3>
 
 
@@ -85,7 +78,6 @@ const ConfigGamePage = () => {
           type="game"
           onClick={handleOnClick}
         />
-      </>)}
     </div>
   )
 }
