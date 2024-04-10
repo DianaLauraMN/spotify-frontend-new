@@ -14,14 +14,12 @@ interface ConfigArtistProps {
 const ConfigArtistComponent: React.FC<ConfigArtistProps> = ({ title }) => {
   const { configurationGame: { isCustomArtistsConfig, artists }, handleOnSelectArtist, handleIsCustomArtistsConfig } = useGame();
   const { gtsState: { userTopArtists }, loadUserTop6Artists } = useGTS();
-  const {checkAuthentication} =useHttpCall();
-  const [artistsLoaded, setArtistsLoaded] = useState(false);
+  const { checkAuthentication } = useHttpCall();
   const [artistsConfig, setArtistsConfig] = useState<Artist[]>([])
 
   useEffect(() => {
-    if (!artistsLoaded) {
+    if (userTopArtists.length === 0) {
       checkAuthentication(loadUserTop6Artists());
-      setArtistsLoaded(true);
     }
     setArtistsConfig(isCustomArtistsConfig ? artists : userTopArtists);
 
