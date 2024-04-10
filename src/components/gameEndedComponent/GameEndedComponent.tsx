@@ -16,7 +16,7 @@ import AudioPlayerComponent from '../audioPlayerComponent/AudioPlayerComponent';
 const GameEndedComponent = () => {
     const { resetStateGame } = useGame();
     const { playState: { score, failed }, resetStatePlay } = usePlay();
-    const { gtsState: { user }, resetStateGTS } = useGTS();
+    const { gtsState: { user } } = useGTS();
     const [sound, setSound] = useState("")
     const [message, setMessage] = useState("")
     const navigate = useNavigate();
@@ -37,7 +37,6 @@ const GameEndedComponent = () => {
     const handleOnClick = () => {
         resetStateGame();
         resetStatePlay();
-        resetStateGTS();
         navigate('/configGame');
     }
 

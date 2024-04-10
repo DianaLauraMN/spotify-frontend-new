@@ -13,16 +13,15 @@ interface ConfigGenreProps {
 const ConfigGenreComponent: React.FC<ConfigGenreProps> = ({ title }) => {
     const { configurationGame: { isCustomGenresConfig, genres }, handleOnSelectGenre: handleOnSelectGenres, handleIsCustomGenresConfig } = useGame();
     const { gtsState: { userTopGenresSeeds }, loadUserTop6GenresSeeds } = useGTS();
-    const {checkAuthentication} =useHttpCall();
-    const [genresLoaded, setGenresLoaded] = useState(false);
+    const { checkAuthentication } = useHttpCall();
     const [genresConfig, setGenresConfig] = useState<string[]>([]);
 
     useEffect(() => {
-        if (!genresLoaded) {
+        if (userTopGenresSeeds.length === 0) {
             checkAuthentication(loadUserTop6GenresSeeds());
-            setGenresLoaded(true);
         }
-        setGenresConfig(isCustomGenresConfig ? genres : userTopGenresSeeds)
+        setGenresConfig(isCustomGenresConfig ? genres : userTopGenresSeeds);
+        
         if (genres.length === 0) {
             setGenresConfig(userTopGenresSeeds);
             handleIsCustomGenresConfig(false);
