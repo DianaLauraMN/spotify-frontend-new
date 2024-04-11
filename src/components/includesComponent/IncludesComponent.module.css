@@ -1,4 +1,4 @@
-.GuessFromContainer {
+.IncludesContainer {
     height: 100%;
     width: 100%;
     background-color: var(--darkGrey);
@@ -24,7 +24,7 @@
     align-self: center;
 }
 
-.formRadioBtnOptions {
+.formCbxOptions {
     width: 18rem;
     font-size: 1rem;
 }

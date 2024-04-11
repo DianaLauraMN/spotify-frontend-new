@@ -16,7 +16,8 @@ const initial_state: ConfigurationGame = {
     level: Levels.EASY,
     genres: [],
     artists: [],
-    guessFromBeggining: false,
+    allowRemixes: true,
+    allowIntrosOutros: true,
     durationMs: 5,
     tracksQuantity: 10,
     tracks: [],
@@ -60,8 +61,11 @@ const GameProvider = ({ children }: props) => {
     const handleOnSelectArtist = (artist: Artist) => {
         dispatch({ type: ConfigurationAction.SELECT_ARTIST, payload: artist })
     }
-    const handleOnChangeGuessFrom = (beggining: boolean) => {
-        dispatch({ type: ConfigurationAction.CHANGE_BEGGINING, payload: beggining })
+    const handleOnChangeAllowRemixes = (allowRemixes: boolean) => {
+        dispatch({ type: ConfigurationAction.CHANGE_ALLOW_REMIXES, payload: allowRemixes })
+    }
+    const handleOnChangeAllowIntrosOutros = (allowIntrosOutros: boolean) => {
+        dispatch({ type: ConfigurationAction.CHANGE_ALLOW_INTROS_OUTROS, payload: allowIntrosOutros })
     }
     const handleOnChangeHowManySec = (durationMs: number) => {
         dispatch({ type: ConfigurationAction.CHANGE_DURATION_MS, payload: durationMs })
@@ -133,7 +137,8 @@ const GameProvider = ({ children }: props) => {
             handleOnChangeLevel,
             handleOnSelectGenre,
             handleOnSelectArtist,
-            handleOnChangeGuessFrom,
+            handleOnChangeAllowRemixes,
+            handleOnChangeAllowIntrosOutros,
             handleOnChangeHowManySec,
             handleOnChangeHowManySongs,
             handleIsTrackAlreadyGuessed,
