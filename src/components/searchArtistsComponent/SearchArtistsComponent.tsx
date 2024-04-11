@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import style from "./SearchArtistsComponent.module.css"
 import useGTS from '../../hooks/useGTS';
 import useGame from '../../hooks/useGame';
 import Artist from '../../entities/artist/Artist';
 import TimerCallApi from '../utilitiesComponents/timerCallApi/TimerCallApi';
 import useHttpCall from '../../hooks/useHttpCall';
+import iconSpotify from '../../img/icon-logo-spotify.svg';
+
 interface SearchArtistsProps {
   title: string;
 }
 
 const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [prevSearchTerm, setPrevSearchTerm] = useState('');
   const [resultsList, setResultsList] = useState<Artist[]>([]);
   const [isFetching, setIsFetching] = useState(false);
   const { checkAuthentication } = useHttpCall();
@@ -20,6 +21,7 @@ const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
   const { configurationGame: { isNewArtistsSearch }, handleOnSelectArtist, handleIsCustomArtistsConfig, handleIsNewArtistsSearch } = useGame();
 
   const { increment, time, setTime, isTimerOn } = TimerCallApi();
+  const ulRef = useRef<HTMLUListElement>(null);
 
   const handleInputChange = (event: { target: { value: any; }; }) => {
     const { value } = event.target;
@@ -29,6 +31,8 @@ const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
     }
     setSearchTerm(value);
     increment();
+
+    if (ulRef.current) ulRef.current.scrollTop = 0;
   };
 
   const handleArtistSelected = (artist: Artist) => {
@@ -39,10 +43,9 @@ const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
   }
 
   const handleApiCall = () => {
-    if ((searchTerm != prevSearchTerm) && isFetching) {
+    if ((time == 1) && isFetching) {
       cleanArtistsResultsSearch();
       checkAuthentication(loadSearchResultsArtists(searchTerm));
-      setPrevSearchTerm(searchTerm);
       handleIsNewArtistsSearch(false);
     } else {
       handleIsNewArtistsSearch(true);
@@ -83,11 +86,11 @@ const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
         onChange={handleInputChange}
       />
       <div className={style.resultsContainer}>
-        <ul className={style.ulResults}>
+        <ul className={style.ulResults} ref={ulRef}>
           {resultsList?.map((artistResult) => (
             <div onClick={() => { handleArtistSelected(artistResult) }} key={artistResult.id}>
               <li className={style.resultOption}>
-                <img src={artistResult.images[0]?.url} />
+                <img src={artistResult.images[0] ? artistResult.images[0]?.url : iconSpotify} />
                 <h5>{artistResult.name}</h5>
               </li>
             </div>
