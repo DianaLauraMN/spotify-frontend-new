@@ -8,7 +8,7 @@ export enum ConfigurationAction {
     CHANGE_LEVEL = 1,
     SELECT_GENRE = 2,
     SELECT_ARTIST = 3,
-    CHANGE_BEGGINING = 4,
+    CHANGE_ALLOW_REMIXES = 4,
     CHANGE_DURATION_MS = 5,
     CHANGE_TRACKS_QUANTITY = 6,
     CHANGE_TRACK_ALREADY_GUESSED = 7,
@@ -24,7 +24,8 @@ export enum ConfigurationAction {
     NEW_GENRES_SEARCH = 17,
     CHANGE_STEP = 18,
     HANDLE_ARE_TRACKS_LOADED = 19,
-    RESET_GAME_STEP = 20,
+    CHANGE_ALLOW_INTROS_OUTROS = 20,
+    RESET_GAME_STEP = 21,
 }
 
 type gameAction =
@@ -32,7 +33,7 @@ type gameAction =
     | { type: ConfigurationAction.CHANGE_LEVEL, payload: Levels }
     | { type: ConfigurationAction.SELECT_GENRE, payload: string }
     | { type: ConfigurationAction.SELECT_ARTIST, payload: Artist }
-    | { type: ConfigurationAction.CHANGE_BEGGINING, payload: boolean }
+    | { type: ConfigurationAction.CHANGE_ALLOW_REMIXES, payload: boolean }
     | { type: ConfigurationAction.CHANGE_DURATION_MS, payload: number }
     | { type: ConfigurationAction.CHANGE_TRACKS_QUANTITY, payload: number }
     | { type: ConfigurationAction.CHANGE_TRACK_ALREADY_GUESSED, payload: boolean }
@@ -48,7 +49,9 @@ type gameAction =
     | { type: ConfigurationAction.NEW_GENRES_SEARCH, payload: boolean }
     | { type: ConfigurationAction.CHANGE_STEP, payload: Steps }
     | { type: ConfigurationAction.HANDLE_ARE_TRACKS_LOADED, payload: boolean }
+    | { type: ConfigurationAction.CHANGE_ALLOW_INTROS_OUTROS, payload: boolean }
     | { type: ConfigurationAction.RESET_GAME_STEP, payload: ConfigurationGame }
+
 
 export const GameReducer = (state: ConfigurationGame, action: gameAction): ConfigurationGame => {
 
@@ -93,16 +96,16 @@ export const GameReducer = (state: ConfigurationGame, action: gameAction): Confi
                 artists: stateArtists,
             };
 
-        case ConfigurationAction.CHANGE_BEGGINING:
+        case ConfigurationAction.CHANGE_ALLOW_REMIXES:
             return {
                 ...state,
-                guessFromBeggining: action.payload
+                allowRemixes: action.payload
             }
 
         case ConfigurationAction.CHANGE_DURATION_MS:
             return {
                 ...state,
-                durationMs: (action.payload) //+1
+                durationMs: action.payload
             }
 
         case ConfigurationAction.CHANGE_TRACKS_QUANTITY:
@@ -198,13 +201,19 @@ export const GameReducer = (state: ConfigurationGame, action: gameAction): Confi
                 timerSong: action.payload.timerSong,
             }
 
+        case ConfigurationAction.CHANGE_ALLOW_INTROS_OUTROS:
+            return {
+                ...state,
+                allowIntrosOutros: action.payload
+            }
+
         case ConfigurationAction.RESET_STATE:
             return {
                 ...state,
                 level: action.payload.level,
                 genres: action.payload.genres,
                 artists: action.payload.artists,
-                guessFromBeggining: action.payload.guessFromBeggining,
+                allowRemixes: action.payload.allowRemixes,
                 durationMs: action.payload.durationMs,
                 tracksQuantity: action.payload.tracksQuantity,
                 tracks: action.payload.tracks,
@@ -219,6 +228,7 @@ export const GameReducer = (state: ConfigurationGame, action: gameAction): Confi
                 isNewGenresSearch: action.payload.isNewGenresSearch,
                 gameStep: action.payload.gameStep,
                 areTracksLoaded: action.payload.areTracksLoaded,
+                allowIntrosOutros: action.payload.allowIntrosOutros,
             }
         default:
             return state;
