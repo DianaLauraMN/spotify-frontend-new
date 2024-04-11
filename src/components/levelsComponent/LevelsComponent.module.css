@@ -1,6 +1,7 @@
 .levelContainer {
     height: 100%;
     width: 100%;
+    min-height: 6.5rem;
     background-color: var(--darkGrey);
     border-radius: 0.438rem;
     text-align: left;
@@ -13,7 +14,7 @@
 .centerContainer {
     display: grid;
     grid-template-rows: 25% 75%;
-    gap: 1rem;
+    gap: .5rem;
     justify-content: center;
     align-items: center;
     margin: 1rem 0rem;
