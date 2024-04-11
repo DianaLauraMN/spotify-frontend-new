@@ -13,7 +13,8 @@ export interface ConfigurationGame {
     level: Levels;
     genres: string[];
     artists: Artist[];
-    guessFromBeggining: boolean;
+    allowRemixes: boolean;
+    allowIntrosOutros: boolean;
     durationMs: number;
     tracksQuantity: number;
     tracks?: Track[];
