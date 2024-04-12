@@ -77,6 +77,10 @@ const GTSProvider = ({ children }: props) => {
         dispatch({ type: GTSAction.HANLDE_SCROLL_ON_TOP, payload: scrollOnTop })
     }
 
+    const cleanGenresResultsSearch = () => {
+        dispatch({ type: GTSAction.CLEAN_GENRE_SEARCH, payload: [] })
+    }
+
     const resetStateGTS = () => {
         dispatch({ type: GTSAction.RESET_STATE, payload: initial_state })
     }
@@ -96,6 +100,7 @@ const GTSProvider = ({ children }: props) => {
             resetStateGTS,
             cleanArtistsResultsSearch,
             handleScrollOnTop,
+            cleanGenresResultsSearch,
         }}>
             {children}
         </GTSContext.Provider>

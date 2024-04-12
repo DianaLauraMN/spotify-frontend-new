@@ -17,6 +17,7 @@ export enum GTSAction {
     RESET_STATE = 10,
     CLEAN_ARTISTS_SEARCH = 11,
     HANLDE_SCROLL_ON_TOP = 12,
+    CLEAN_GENRE_SEARCH = 13,
 }
 
 type gtsAction =
@@ -32,6 +33,7 @@ type gtsAction =
     | { type: GTSAction.LOAD_GENRES_ITEMS_SEARCHED_RESULTS, payload: string[] }
     | { type: GTSAction.RESET_STATE, payload: IStateGTS }
     | { type: GTSAction.CLEAN_ARTISTS_SEARCH, payload: Artist[] }
+    | { type: GTSAction.CLEAN_GENRE_SEARCH, payload: string[] }
     | { type: GTSAction.HANLDE_SCROLL_ON_TOP, payload: boolean }
 
 export const GTSReducer = (state: IStateGTS, action: gtsAction): IStateGTS => {
@@ -100,6 +102,12 @@ export const GTSReducer = (state: IStateGTS, action: gtsAction): IStateGTS => {
             return {
                 ...state,
                 scrollOnTop: action.payload
+            }
+
+        case GTSAction.CLEAN_GENRE_SEARCH:
+            return {
+                ...state,
+                searchResultsGenres: action.payload
             }
 
         case GTSAction.RESET_STATE:

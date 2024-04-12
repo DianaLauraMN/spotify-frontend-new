@@ -38,8 +38,9 @@ const SearchArtistsComponent: React.FC<SearchArtistsProps> = ({ title }) => {
   const handleArtistSelected = (artist: Artist) => {
     handleOnSelectArtist(artist);
     handleIsCustomArtistsConfig(true);
-    setSearchTerm('');
     handleIsNewArtistsSearch(true);
+    cleanArtistsResultsSearch();
+    setSearchTerm('');
   }
 
   const handleApiCall = () => {
