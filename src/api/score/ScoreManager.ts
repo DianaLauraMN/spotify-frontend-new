@@ -7,19 +7,30 @@ class ScoreManager {
         const currentTrackName = currentTrack.name.toLocaleLowerCase();
 
         if (trackAnswer && currentTrack) {
-            return ((trackAnswer.id === currentTrack.id) || ((trackAnswerName === currentTrackName) && this.hasCommonArtists(currentTrack.artists, trackAnswer.artists))
-                || (currentTrackName.includes(trackAnswerName) && this.hasCommonArtists(currentTrack.artists, trackAnswer.artists)));
+            return ((trackAnswer.id === currentTrack.id) || ((trackAnswerName === currentTrackName) && this.hasCommonArtists(currentTrack.artists, trackAnswer.artists)));
         }
         return false;
     }
 
     hasCommonArtists(currentArtists: Artist[], answerArtists: Artist[]): boolean {
-        currentArtists.forEach(currentArtist => {
-            answerArtists.forEach(answerArtist => {
-                return currentArtist.name === answerArtist.name ? true : false;
+        let hasCommonArtists = false;
+
+        if (currentArtists.length === 1 && answerArtists.length === 1) {
+            hasCommonArtists = this.hasTheSameArtists(currentArtists[0], answerArtists[0]);
+        } else {
+            currentArtists.forEach(currentArtist => {
+                answerArtists.forEach(answerArtist => {
+                    if (currentArtist.name === answerArtist.name) {
+                        hasCommonArtists = true;
+                    }
+                });
             });
-        });
-        return false;
+        }
+        return hasCommonArtists;
+    }
+
+    hasTheSameArtists(currentArtist: Artist, answerArtist: Artist): boolean {
+        return currentArtist.id === answerArtist.id;
     }
 }
 
