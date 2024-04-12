@@ -9,7 +9,7 @@ interface SearchGenreProps {
 const SearchGenreComponent: React.FC<SearchGenreProps> = ({ title }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [resultsList, setResultsList] = useState<string[]>([]);
-    const { gtsState: { searchResultsGenres }, loadSearchResultsGenres } = useGTS();
+    const { gtsState: { searchResultsGenres }, loadSearchResultsGenres, cleanGenresResultsSearch } = useGTS();
     const { configurationGame: { isNewGenresSearch }, handleOnSelectGenre, handleIsCustomGenresConfig, handleIsNewGenresSearch } = useGame();
     const { checkAuthentication } = useHttpCall();
 
@@ -28,8 +28,9 @@ const SearchGenreComponent: React.FC<SearchGenreProps> = ({ title }) => {
     const handleGenreSelected = (genre: string) => {
         handleOnSelectGenre(genre);
         handleIsCustomGenresConfig(true);
-        setSearchTerm('');
         handleIsNewGenresSearch(true);
+        cleanGenresResultsSearch();
+        setSearchTerm('');
     }
 
     useEffect(() => {
