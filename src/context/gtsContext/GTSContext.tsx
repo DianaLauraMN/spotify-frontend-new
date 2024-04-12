@@ -27,6 +27,7 @@ export type GTSContextProps = {
     loadSearchResultsGenres: (itemName: string) => void;
     cleanTracksResultsSearch: () => void;
     cleanArtistsResultsSearch: () => void;
+    cleanGenresResultsSearch: () => void;
     handleScrollOnTop: (isScrollOnTop: boolean) => void;
     resetStateGTS: () => void;
 }
